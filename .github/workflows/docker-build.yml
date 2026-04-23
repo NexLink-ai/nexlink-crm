@@ -6,31 +6,19 @@ on:
     tags: ['v*']
 
 env:
-  REGISTRY: ghcr.io
   IMAGE_NAME: ghcr.io/nexlink-ai/nexlink-crm
-  BUILDER_DIR: frappe_docker
-  APPS_JSON_PATH: frappe_docker/.github/tmp/apps.json
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     permissions:
       contents: read
       packages: write
 
     steps:
-      - name: Checkout builder (frappe_docker)
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          repository: frappe/frappe_docker
-          ref: main
-          path: frappe_docker
-
-      - name: Create apps.json
-        run: |
-          mkdir -p "$(dirname "$APPS_JSON_PATH")"
-          echo '[{"url":"https://github.com/NexLink-ai/nexlink-crm","branch":"white-label"}]' > "$APPS_JSON_PATH"
 
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v3
@@ -48,13 +36,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ${{ env.BUILDER_DIR }}
-          file: ${{ env.BUILDER_DIR }}/images/layered/Containerfile
+          context: .
+          file: docker/Dockerfile
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
-          build-args: |
-            FRAPPE_IMAGE_PREFIX=ghcr.io/frappe
-            FRAPPE_PATH=https://github.com/frappe/frappe
-            FRAPPE_BRANCH=version-16
-          secrets: |
-            id=apps_json,src=${{ env.APPS_JSON_PATH }}
