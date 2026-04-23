@@ -1,9 +1,9 @@
 [project]
 name = "crm"
 authors = [
-    { name = "Frappe Technologies Pvt. Ltd.", email = "shariq@frappe.io"}
+    { name = "NexLink, Inc.", email = "hello@nexlink.ai"}
 ]
-description = "Kick-ass Open Source CRM"
+description = "NexLink CRM — Plataforma de relacionamento com clientes"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
@@ -72,6 +72,6 @@ indent-style = "tab"
 docstring-code-format = true
 
 [project.urls]
-Homepage = "https://frappe.io/crm"
-Repository = "https://github.com/frappe/crm.git"
-"Bug Reports" = "https://github.com/frappe/crm/issues"
+Homepage = "https://crm.nexlink.ai"
+Repository = "https://github.com/NexLink-ai/nexlink-crm.git"
+"Bug Reports" = "https://github.com/NexLink-ai/nexlink-crm/issues"

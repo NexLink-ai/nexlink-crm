@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: nexlink-ai/nexlink-crm
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
@@ -55,6 +56,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             FRAPPE_PATH=https://github.com/frappe/frappe
-            FRAPPE_BRANCH=version-15
+            FRAPPE_BRANCH=version-16
           secrets: |
             apps_json=@frappe_docker/apps.json
