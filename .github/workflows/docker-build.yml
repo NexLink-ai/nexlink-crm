@@ -53,7 +53,7 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
           build-args: |
-            FRAPPE_IMAGE_PREFIX=frappe
+            FRAPPE_IMAGE_PREFIX=ghcr.io/frappe
             FRAPPE_PATH=https://github.com/frappe/frappe
             FRAPPE_BRANCH=version-16
           secrets: |
