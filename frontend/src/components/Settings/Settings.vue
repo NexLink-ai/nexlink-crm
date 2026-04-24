@@ -130,11 +130,6 @@ const tabs = computed(() => {
           icon: MonitorCogIcon,
         },
         {
-          label: __('Brand'),
-          icon: SparkleIcon,
-          component: markRaw(BrandSettings),
-        },
-        {
           label: __('Calendar'),
           icon: CalendarIcon,
           component: markRaw(CalendarSettings),
