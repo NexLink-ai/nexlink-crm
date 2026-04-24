@@ -336,8 +336,7 @@
 
         <div class="error-box" id="error-box"></div>
 
-        <form id="login-form" method="POST" action="/api/method/login">
-          <input type="hidden" name="cmd" value="login">
+        <form id="login-form" onsubmit="return handleLogin(event)">
           <div class="field">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="usr" placeholder="voce@exemplo.com" autocomplete="email" required>
@@ -466,7 +465,7 @@
     }
 
     /* ── Login submit ── */
-    document.getElementById('login-form').addEventListener('submit', async function (e) {
+    function handleLogin(e) {
       e.preventDefault()
       const btn = document.getElementById('submit-btn')
       const err = document.getElementById('error-box')
@@ -474,35 +473,37 @@
       btn.textContent = 'Entrando...'
       err.style.display = 'none'
 
-      try {
-        const res = await fetch('/api/method/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'X-Frappe-CSRF-Token': getCsrf(),
-          },
-          body: new URLSearchParams({
-            usr: document.getElementById('email').value,
-            pwd: document.getElementById('password').value,
-            cmd: 'login',
-          }),
-        })
-        const data = await res.json()
-        if (res.ok && data.message === 'Logged In') {
+      fetch('/api/method/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'X-Frappe-CSRF-Token': getCsrf(),
+        },
+        body: new URLSearchParams({
+          usr: document.getElementById('email').value,
+          pwd: document.getElementById('password').value,
+          cmd: 'login',
+        }),
+      })
+      .then(function(res) { return res.json().then(function(data) { return { res: res, data: data } }) })
+      .then(function(r) {
+        if (r.res.ok && r.data.message === 'Logged In') {
           window.location.href = getRedirect()
         } else {
-          err.textContent = data.message || 'E-mail ou senha incorretos.'
+          err.textContent = r.data.message || 'E-mail ou senha incorretos.'
           err.style.display = 'block'
           btn.disabled = false
           btn.textContent = 'Entrar'
         }
-      } catch {
+      })
+      .catch(function() {
         err.textContent = 'Erro de conexão. Tente novamente.'
         err.style.display = 'block'
         btn.disabled = false
         btn.textContent = 'Entrar'
-      }
-    })
+      })
+      return false
+    }
   </script>
 </body>
 </html>
