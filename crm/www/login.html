@@ -336,7 +336,8 @@
 
         <div class="error-box" id="error-box"></div>
 
-        <form id="login-form">
+        <form id="login-form" method="POST" action="/api/method/login">
+          <input type="hidden" name="cmd" value="login">
           <div class="field">
             <label for="email">E-mail</label>
             <input type="email" id="email" name="usr" placeholder="voce@exemplo.com" autocomplete="email" required>
