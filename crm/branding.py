@@ -1,6 +1,6 @@
 import frappe
 
-LOGO_URL = "/assets/crm/images/logo.svg"
+LOGO_URL = "/assets/crm/images/logo-light.svg"
 APP_NAME = "NexLink CRM"
 
 

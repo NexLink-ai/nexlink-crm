@@ -41,16 +41,24 @@ a[href*="frappeframework.com"] {
 	display: none !important;
 }
 
-/* --- Desk: navbar logo — light mode --- */
-.navbar .frappe-logo {
+/* --- Desk: brand logo — light mode --- */
+#brand-logo {
 	content: url("/assets/crm/images/logo-light.svg") !important;
-	max-height: 30px !important;
+	max-height: 28px !important;
+	width: auto !important;
 }
 
-/* --- Desk: navbar logo — dark mode --- */
-[data-theme="dark"] .navbar .frappe-logo {
+/* --- Desk: brand logo — dark mode --- */
+[data-theme="dark"] #brand-logo {
 	content: url("/assets/crm/images/logo-dark.svg") !important;
-	max-height: 30px !important;
+}
+
+/* --- Desk: background dark mode --- */
+[data-theme="dark"],
+[data-theme="dark"] body,
+[data-theme="dark"] .page-container {
+	--bg-color: oklch(0.16 0 0) !important;
+	background-color: oklch(0.16 0 0) !important;
 }
 
 /* --- About dialog --- */

@@ -25,11 +25,43 @@
     })
   }
 
+  function applyDeskBranding() {
+    // Override desk page title
+    if (document.title && (document.title === 'Frappe' || document.title.includes('Frappe'))) {
+      document.title = 'NexLink CRM'
+    }
+    if (!document.title || document.title === '') {
+      document.title = 'NexLink CRM'
+    }
+
+    // Inject meta description if missing
+    if (!document.querySelector('meta[name="description"]')) {
+      var meta = document.createElement('meta')
+      meta.name = 'description'
+      meta.content = 'NexLink CRM — Plataforma de relacionamento com clientes'
+      document.head.appendChild(meta)
+    }
+
+    // Override favicon to NexLink
+    var existingFavicon = document.querySelector('link[rel="icon"]')
+    if (existingFavicon && existingFavicon.href.includes('frappe')) {
+      existingFavicon.href = '/assets/crm/favicon.png'
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyBranding)
+    document.addEventListener('DOMContentLoaded', function () {
+      applyBranding()
+      applyDeskBranding()
+    })
   } else {
     applyBranding()
+    applyDeskBranding()
   }
+
   // Run again after a short delay to catch dynamic content
-  setTimeout(applyBranding, 500)
+  setTimeout(function () {
+    applyBranding()
+    applyDeskBranding()
+  }, 500)
 })()
