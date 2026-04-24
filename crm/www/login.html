@@ -385,46 +385,52 @@
     (function () {
       const canvas = document.getElementById('dot-canvas')
       const ctx = canvas.getContext('2d')
-      const SPACING = 28, BASE_R = 1.2, MAX_R = 3, INFLUENCE = 120
-      let mouse = { x: -9999, y: -9999 }, cols, rows, dpr
+      let animationId
+      let mouseX = -1000, mouseY = -1000
+
+      const spacing = 28, baseRadius = 1.2, maxRadius = 3, influenceRadius = 120
 
       function resize() {
-        dpr = window.devicePixelRatio || 1
+        const dpr = window.devicePixelRatio || 1
         canvas.width  = window.innerWidth  * dpr
         canvas.height = window.innerHeight * dpr
         canvas.style.width  = window.innerWidth  + 'px'
         canvas.style.height = window.innerHeight + 'px'
-        ctx.scale(dpr, dpr)
-        cols = Math.ceil(window.innerWidth  / SPACING) + 1
-        rows = Math.ceil(window.innerHeight / SPACING) + 1
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       }
 
       function isDark() { return document.body.classList.contains('dark') }
 
       function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        const baseAlpha = isDark() ? 0.20 : 0.18
-        const maxAlpha  = isDark() ? 0.70 : 0.63
-        const rgb       = isDark() ? '255,255,255' : '0,0,0'
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+        const dark = isDark()
+        const cols = Math.ceil(window.innerWidth  / spacing) + 1
+        const rows = Math.ceil(window.innerHeight / spacing) + 1
 
-        for (let r = 0; r < rows; r++) {
-          for (let c = 0; c < cols; c++) {
-            const x = c * SPACING, y = r * SPACING
-            const dx = x - mouse.x, dy = y - mouse.y
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const x = col * spacing, y = row * spacing
+            const dx = x - mouseX, dy = y - mouseY
             const dist = Math.sqrt(dx * dx + dy * dy)
-            const t = dist < INFLUENCE ? 1 - dist / INFLUENCE : 0
-            const alpha  = baseAlpha + (maxAlpha - baseAlpha) * t
-            const radius = BASE_R   + (MAX_R    - BASE_R)    * t
+            let radius = baseRadius
+            let opacity = dark ? 0.2 : 0.18
+            if (dist < influenceRadius) {
+              const factor = 1 - dist / influenceRadius
+              radius  = baseRadius + (maxRadius - baseRadius) * factor
+              opacity = dark ? 0.2 + 0.5 * factor : 0.18 + 0.45 * factor
+            }
             ctx.beginPath()
             ctx.arc(x, y, radius, 0, Math.PI * 2)
-            ctx.fillStyle = 'rgba(' + rgb + ',' + alpha + ')'
+            ctx.fillStyle = dark
+              ? 'rgba(255,255,255,' + opacity + ')'
+              : 'rgba(0,0,0,'       + opacity + ')'
             ctx.fill()
           }
         }
-        requestAnimationFrame(draw)
+        animationId = requestAnimationFrame(draw)
       }
 
-      window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY })
+      window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY })
       window.addEventListener('resize', resize)
       resize()
       draw()
