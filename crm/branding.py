@@ -1,6 +1,7 @@
 import frappe
 
 LOGO_URL = "/assets/crm/images/logo-light.svg"
+FAVICON_URL = "/assets/crm/favicon.png"
 APP_NAME = "NexLink CRM"
 
 
@@ -10,7 +11,9 @@ def set_branding():
 		frappe.db.set_single_value(
 			"Website Settings",
 			{
+				"app_name": APP_NAME,
 				"app_logo": LOGO_URL,
+				"favicon": FAVICON_URL,
 				"brand_html": f'<img src="{LOGO_URL}" alt="NexLink CRM" style="height:32px;width:auto;">',
 				"footer_logo": LOGO_URL,
 			},
@@ -28,7 +31,9 @@ def set_branding():
 
 
 def lock_branding(doc, method=None):
-	"""Prevent anyone from changing logo or brand HTML in Website Settings."""
+	"""Prevent anyone from overriding NexLink branding in Website Settings."""
+	doc.app_name = APP_NAME
 	doc.app_logo = LOGO_URL
+	doc.favicon = FAVICON_URL
 	doc.brand_html = f'<img src="{LOGO_URL}" alt="NexLink CRM" style="height:32px;width:auto;">'
 	doc.footer_logo = LOGO_URL
