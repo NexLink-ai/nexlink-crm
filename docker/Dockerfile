@@ -24,10 +24,11 @@ COPY --from=builder --chown=frappe:frappe /home/frappe/frappe-bench /home/frappe
 WORKDIR /home/frappe/frappe-bench
 
 # Replace Frappe logos with NexLink assets
-RUN cp apps/crm/crm/public/images/logo.svg apps/frappe/frappe/public/images/frappe-framework-logo.svg && \
-    cp apps/crm/crm/public/images/logo.svg apps/frappe/frappe/public/images/frappe-logo.svg && \
-    cp apps/crm/crm/public/favicon.png apps/frappe/frappe/public/favicon.png && \
-    cp apps/crm/crm/public/images/logo.svg apps/frappe/frappe/public/icons/frappe-favicon.svg
+RUN cp apps/crm/crm/public/images/logo-light.svg apps/frappe/frappe/public/images/frappe-framework-logo.svg && \
+    cp apps/crm/crm/public/images/logo-light.svg apps/frappe/frappe/public/images/frappe-logo.svg && \
+    cp apps/crm/crm/public/images/logo-light.svg apps/frappe/frappe/public/images/frappe-favicon.svg && \
+    cp apps/crm/crm/public/images/logo-light.svg apps/frappe/frappe/public/icons/frappe-favicon.svg && \
+    cp apps/crm/crm/public/favicon.png apps/frappe/frappe/public/favicon.png
 
 VOLUME ["/home/frappe/frappe-bench/sites", "/home/frappe/frappe-bench/logs"]
 
