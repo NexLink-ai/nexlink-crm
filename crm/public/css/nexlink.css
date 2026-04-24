@@ -11,15 +11,21 @@ img[alt="Frappe Framework"] {
 	object-fit: contain !important;
 }
 
-/* Login page: replace logo with NexLink */
+/* Login page: NexLink logo — light mode (black logo) */
 img[src*="frappe-framework-logo"],
 img[src*="frappe-logo"] {
-	content: url("/assets/crm/images/logo.svg") !important;
+	content: url("/assets/crm/images/logo-light.svg") !important;
 	max-height: 48px !important;
 	max-width: 200px !important;
 }
 
-/* --- Hide "Login to Frappe" → replace via JS below --- */
+/* Login page: NexLink logo — dark mode (white logo) */
+@media (prefers-color-scheme: dark) {
+	img[src*="frappe-framework-logo"],
+	img[src*="frappe-logo"] {
+		content: url("/assets/crm/images/logo-dark.svg") !important;
+	}
+}
 
 /* --- Hide "Built on Frappe" and Frappe footer references --- */
 .powered-by,
@@ -35,9 +41,15 @@ a[href*="frappeframework.com"] {
 	display: none !important;
 }
 
-/* --- Desk: hide Frappe navbar logo --- */
+/* --- Desk: navbar logo — light mode --- */
 .navbar .frappe-logo {
-	content: url("/assets/crm/images/logo.svg") !important;
+	content: url("/assets/crm/images/logo-light.svg") !important;
+	max-height: 30px !important;
+}
+
+/* --- Desk: navbar logo — dark mode --- */
+[data-theme="dark"] .navbar .frappe-logo {
+	content: url("/assets/crm/images/logo-dark.svg") !important;
 	max-height: 30px !important;
 }
 
