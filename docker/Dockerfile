@@ -14,6 +14,7 @@ RUN echo '[{"url":"https://github.com/NexLink-ai/nexlink-crm","branch":"white-la
         /home/frappe/frappe-bench && \
     cd /home/frappe/frappe-bench && \
     echo "{}" > sites/common_site_config.json && \
+    bench build --app crm && \
     find apps -mindepth 1 -path "*/.git" | xargs rm -fr
 
 FROM ghcr.io/frappe/base:version-16

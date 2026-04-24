@@ -1,55 +1,47 @@
 /* NexLink CRM — White-label overrides */
 
-/* --- Login page: replace Frappe logo with NexLink --- */
-.login-content .page-card-head img[src*="frappe"],
-.login-content img[src*="frappe-framework"],
+/* --- Login page: constrain logo size --- */
+.login-content .page-card-head img,
+.login-content .text-center img,
 img[src*="frappe-framework-logo"],
-img[alt="Frappe Framework"],
-.navbar-brand img[src*="frappe"] {
-	content: url("/assets/crm/images/logo.svg") !important;
-	max-height: 36px !important;
+img[alt="Frappe Framework"] {
+	max-height: 48px !important;
+	max-width: 200px !important;
 	width: auto !important;
+	object-fit: contain !important;
 }
 
-/* Setup wizard logo */
-.slide-container img[src*="frappe"],
-.setup-wizard img[src*="frappe"] {
+/* Login page: replace logo with NexLink */
+img[src*="frappe-framework-logo"],
+img[src*="frappe-logo"] {
 	content: url("/assets/crm/images/logo.svg") !important;
-	max-height: 40px !important;
+	max-height: 48px !important;
+	max-width: 200px !important;
 }
 
-/* --- Hide "Built on Frappe" footer and references --- */
+/* --- Hide "Login to Frappe" → replace via JS below --- */
+
+/* --- Hide "Built on Frappe" and Frappe footer references --- */
 .powered-by,
 .frappe-footer,
+.login-footer,
 footer .text-muted a[href*="frappe"],
-p:has(a[href*="frappeframework"]),
-.login-footer {
+p:has(a[href*="frappeframework"]) {
 	display: none !important;
 }
 
-/* Hide "Frappe Cloud" and "frappe.io" links anywhere */
 a[href*="frappecloud.com"],
-a[href*="frappeframework.com"],
-a[href*="frappe.io"] {
+a[href*="frappeframework.com"] {
 	display: none !important;
 }
 
-/* --- Desk: hide Frappe references in navbar/header --- */
-.navbar .frappe-logo,
-.navbar img[src*="frappe-framework"] {
+/* --- Desk: hide Frappe navbar logo --- */
+.navbar .frappe-logo {
 	content: url("/assets/crm/images/logo.svg") !important;
 	max-height: 30px !important;
 }
 
-/* About dialog: hide Frappe version info */
-.about-dialog .powered-by,
-.about-dialog p:has(a[href*="frappe"]) {
+/* --- About dialog --- */
+.about-dialog .powered-by {
 	display: none !important;
-}
-
-/* Website Settings: hide logo/brand fields from non-admin users */
-[data-fieldname="app_logo_url"],
-[data-fieldname="brand_html"] {
-	pointer-events: none !important;
-	opacity: 0.5 !important;
 }

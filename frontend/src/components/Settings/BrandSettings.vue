@@ -7,7 +7,7 @@
           {{ __('Brand Settings') }}
         </h2>
         <p class="text-p-base text-ink-gray-6">
-          {{ __('Configure your Brand Name, Logo, and Favicon') }}
+          {{ __('Configure your Brand Name and Favicon') }}
         </p>
       </div>
       <div class="flex item-center space-x-2 w-3/12 justify-end">
@@ -23,7 +23,7 @@
 
     <!-- Fields -->
     <div class="flex flex-1 flex-col p-2 gap-4 overflow-y-auto">
-      <!-- Brand Anm -->
+      <!-- Brand Name -->
       <div class="flex items-center justify-between gap-8">
         <div class="flex flex-col">
           <div class="text-p-base font-medium text-ink-gray-7 truncate">
@@ -44,42 +44,30 @@
       </div>
       <div class="h-px border-t border-outline-gray-modals" />
 
-      <!-- logo -->
+      <!-- Brand Logo — locked to NexLink -->
       <div class="flex flex-col justify-between gap-4">
         <div class="flex items-center flex-1 gap-5">
           <div
             class="flex items-center justify-center rounded border border-outline-gray-modals size-20"
           >
             <img
-              v-if="settings.doc?.brand_logo"
-              :src="settings.doc?.brand_logo"
-              alt="Logo"
+              :src="'/assets/crm/images/logo.svg'"
+              alt="NexLink CRM"
               class="size-8 rounded"
             />
-            <ImageIcon v-else class="size-5 text-ink-gray-4" />
           </div>
           <div class="flex flex-1 flex-col gap-1">
             <span class="text-base font-medium">{{ __('Brand Logo') }}</span>
             <span class="text-p-base text-ink-gray-6">
-              {{
-                __(
-                  'Appears in the left sidebar. Recommended size is 32x32 px in PNG or SVG',
-                )
-              }}
+              {{ __('The NexLink logo is fixed and cannot be changed.') }}
             </span>
-          </div>
-          <div>
-            <ImageUploader
-              image_type="image/ico"
-              :image_url="settings.doc?.brand_logo"
-              @upload="(url) => (settings.doc.brand_logo = url)"
-              @remove="() => (settings.doc.brand_logo = '')"
-            />
           </div>
         </div>
       </div>
 
-      <!-- favicon -->
+      <div class="h-px border-t border-outline-gray-modals" />
+
+      <!-- Favicon -->
       <div class="flex flex-col justify-between gap-4">
         <div class="flex items-center flex-1 gap-5">
           <div
@@ -126,6 +114,7 @@ import { showSettings } from '@/composables/settings'
 const { _settings: settings, setupBrand } = getSettings()
 
 function updateSettings() {
+  settings.doc.brand_logo = '/assets/crm/images/logo.svg'
   settings.save.submit(null, {
     onSuccess: () => {
       showSettings.value = false

@@ -36,6 +36,7 @@ app_include_css = "/assets/crm/css/nexlink.css"
 
 # include js, css files in header of web template
 web_include_css = "/assets/crm/css/nexlink.css"
+web_include_js = "/assets/crm/js/nexlink.js"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "crm/public/scss/website"
