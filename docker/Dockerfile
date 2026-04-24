@@ -15,6 +15,8 @@ RUN echo '[{"url":"https://github.com/NexLink-ai/nexlink-crm","branch":"white-la
     cd /home/frappe/frappe-bench && \
     echo '{"socketio_port":9000}' > sites/common_site_config.json && \
     bench build --app crm && \
+    bench compile-po-to-mo --app frappe && \
+    bench compile-po-to-mo --app crm && \
     find apps -mindepth 1 -path "*/.git" | xargs rm -fr
 
 FROM ghcr.io/frappe/base:version-16
