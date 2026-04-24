@@ -1717,7 +1717,7 @@ msgstr ""
 #: frontend/src/pages/Contact.vue:246 frontend/src/pages/MobileContact.vue:223
 #: frontend/src/pages/MobileOrganization.vue:348
 msgid "Contacts"
-msgstr ""
+msgstr "Contatos"
 
 #. Label of the content (Text Editor) field in DocType 'FCRM Note'
 #: crm/fcrm/doctype/fcrm_note/fcrm_note.json
@@ -2064,7 +2064,7 @@ msgstr ""
 #: frontend/src/pages/MobileDeal.vue:392
 #: frontend/src/pages/MobileOrganization.vue:342
 msgid "Deals"
-msgstr ""
+msgstr "Negócios"
 
 #: frontend/src/components/Dashboard/AddChartModal.vue:97
 msgid "Deals by Ongoing & Won Stage"
@@ -3955,7 +3955,7 @@ msgstr "É padrão"
 
 #: frontend/src/components/ListViews/EmptyState.vue:43
 msgid "It appears that there are currently no {0} available. You can create more {0} by using the Create button."
-msgstr ""
+msgstr "Parece que não há {0} disponíveis no momento. Você pode criar mais {0} usando o botão Criar."
 
 #. Description of the 'Enable Forecasting' (Check) field in DocType 'FCRM
 #. Settings'
@@ -4076,7 +4076,7 @@ msgstr "Últimos 90 dias"
 #: frontend/src/pages/Organization.vue:523
 #: frontend/src/pages/Organization.vue:551
 msgid "Last Modified"
-msgstr ""
+msgstr "Última modificação"
 
 #: frontend/src/components/Filter.vue:653
 msgid "Last Month"
@@ -4229,7 +4229,7 @@ msgstr ""
 #: frontend/src/pages/InvalidPage.vue:9 frontend/src/pages/Lead.vue:368
 #: frontend/src/pages/MobileLead.vue:238
 msgid "Leads"
-msgstr ""
+msgstr "Leads"
 
 #: frontend/src/components/Dashboard/AddChartModal.vue:106
 msgid "Leads by Source"
@@ -5302,7 +5302,7 @@ msgstr ""
 #: frontend/src/pages/MobileOrganization.vue:218
 #: frontend/src/pages/Organization.vue:256
 msgid "Organizations"
-msgstr ""
+msgstr "Organizações"
 
 #: frontend/src/components/Calendar/CalendarEventPanel.vue:150
 msgid "Organizer"
@@ -6667,7 +6667,7 @@ msgstr ""
 #: frontend/src/components/SortBy.vue:10 frontend/src/components/SortBy.vue:24
 #: frontend/src/components/SortBy.vue:226
 msgid "Sort"
-msgstr ""
+msgstr "Ordenar"
 
 #. Label of the source (Link) field in DocType 'CRM Deal'
 #. Label of the source (Link) field in DocType 'CRM Lead'
@@ -7047,7 +7047,7 @@ msgstr ""
 
 #: frontend/src/components/Filter.vue:685
 msgid "This Month"
-msgstr ""
+msgstr "Este mês"
 
 #: frontend/src/components/Filter.vue:689
 msgid "This Quarter"
@@ -7055,7 +7055,7 @@ msgstr ""
 
 #: frontend/src/components/Filter.vue:681
 msgid "This Week"
-msgstr ""
+msgstr "Esta semana"
 
 #: frontend/src/components/Filter.vue:693
 msgid "This Year"
@@ -7688,7 +7688,7 @@ msgstr ""
 #: crm/fcrm/doctype/crm_lead_status/crm_lead_status.json
 #: frontend/src/components/Settings/ERPNextSettings.vue:226
 msgid "Won"
-msgstr ""
+msgstr "Ganho"
 
 #: frontend/src/components/Dashboard/AddChartModal.vue:79
 msgid "Won Deals"
@@ -8374,3 +8374,74 @@ msgstr ""
 msgid "⚠️ No row found for idx: {0} in parent field: {1}"
 msgstr ""
 
+msgid "Call Logs"
+msgstr "Registros de Chamadas"
+
+msgid "Log Out"
+msgstr "Sair"
+
+msgid "Logout"
+msgstr "Sair"
+
+msgid "Getting Started"
+msgstr "Primeiros Passos"
+
+msgid "Skip"
+msgstr "Pular"
+
+msgid "Skip all"
+msgstr "Pular tudo"
+
+msgid "Reset all"
+msgstr "Redefinir tudo"
+
+msgid "Welcome to"
+msgstr "Bem-vindo ao"
+
+msgid "steps completed"
+msgstr "etapas concluídas"
+
+msgid "You are all set"
+msgstr "Tudo pronto"
+
+msgid "All steps are completed successfully"
+msgstr "Todas as etapas foram concluídas com sucesso"
+
+msgid "Start now"
+msgstr "Começar agora"
+
+msgid "Continue"
+msgstr "Continuar"
+
+msgid "Created"
+msgstr "Criado"
+
+msgid "Next"
+msgstr "Próximo"
+
+msgid "Submit"
+msgstr "Enviar"
+
+msgid "Mobile No"
+msgstr "Celular"
+
+msgid "Company"
+msgstr "Empresa"
+
+msgid "Lead Source"
+msgstr "Origem do Lead"
+
+msgid "Lead Status"
+msgstr "Situação do Lead"
+
+msgid "Replied"
+msgstr "Respondido"
+
+msgid "None"
+msgstr "Nenhum"
+
+msgid "Last modified"
+msgstr "Última modificação"
+
+msgid "Modified"
+msgstr "Modificado"
