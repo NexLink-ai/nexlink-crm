@@ -1,0 +1,55 @@
+/* NexLink CRM — White-label overrides */
+
+/* --- Login page: replace Frappe logo with NexLink --- */
+.login-content .page-card-head img[src*="frappe"],
+.login-content img[src*="frappe-framework"],
+img[src*="frappe-framework-logo"],
+img[alt="Frappe Framework"],
+.navbar-brand img[src*="frappe"] {
+	content: url("/assets/crm/images/logo.svg") !important;
+	max-height: 36px !important;
+	width: auto !important;
+}
+
+/* Setup wizard logo */
+.slide-container img[src*="frappe"],
+.setup-wizard img[src*="frappe"] {
+	content: url("/assets/crm/images/logo.svg") !important;
+	max-height: 40px !important;
+}
+
+/* --- Hide "Built on Frappe" footer and references --- */
+.powered-by,
+.frappe-footer,
+footer .text-muted a[href*="frappe"],
+p:has(a[href*="frappeframework"]),
+.login-footer {
+	display: none !important;
+}
+
+/* Hide "Frappe Cloud" and "frappe.io" links anywhere */
+a[href*="frappecloud.com"],
+a[href*="frappeframework.com"],
+a[href*="frappe.io"] {
+	display: none !important;
+}
+
+/* --- Desk: hide Frappe references in navbar/header --- */
+.navbar .frappe-logo,
+.navbar img[src*="frappe-framework"] {
+	content: url("/assets/crm/images/logo.svg") !important;
+	max-height: 30px !important;
+}
+
+/* About dialog: hide Frappe version info */
+.about-dialog .powered-by,
+.about-dialog p:has(a[href*="frappe"]) {
+	display: none !important;
+}
+
+/* Website Settings: hide logo/brand fields from non-admin users */
+[data-fieldname="app_logo_url"],
+[data-fieldname="brand_html"] {
+	pointer-events: none !important;
+	opacity: 0.5 !important;
+}

@@ -7,6 +7,7 @@ app_license = "AGPLv3"
 app_icon_url = "/assets/crm/images/logo.svg"
 app_icon_title = "NexLink CRM"
 app_icon_route = "/crm"
+app_logo_url = "/assets/crm/images/logo.svg"
 
 # Apps
 # ------------------
@@ -31,12 +32,10 @@ require_type_annotated_api_methods = True
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/crm/css/crm.css"
-# app_include_js = "/assets/crm/js/crm.js"
+app_include_css = "/assets/crm/css/nexlink.css"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/crm/css/crm.css"
-# web_include_js = "/assets/crm/js/crm.js"
+web_include_css = "/assets/crm/css/nexlink.css"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "crm/public/scss/website"
@@ -178,6 +177,9 @@ doc_events = {
 		"before_validate": ["crm.api.live_demo.validate_user"],
 		"validate_reset_password": ["crm.api.live_demo.validate_reset_password"],
 	},
+	"Website Settings": {
+		"before_save": ["crm.branding.lock_branding"],
+	},
 }
 
 # Scheduled Tasks
@@ -285,13 +287,6 @@ standard_dropdown_items = [
 		"label": "Settings",
 		"type": "Route",
 		"icon": "settings",
-		"route": "#",
-		"is_standard": 1,
-	},
-	{
-		"name1": "login_to_fc",
-		"label": "Login to Frappe Cloud",
-		"type": "Route",
 		"route": "#",
 		"is_standard": 1,
 	},

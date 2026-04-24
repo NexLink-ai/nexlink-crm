@@ -31,6 +31,8 @@ def after_install(force=False):
 	create_default_manager_dashboard(force)
 	create_assignment_rule_custom_fields()
 	add_assignment_rule_property_setters()
+	from crm.branding import set_branding
+	set_branding()
 	frappe.db.commit()
 
 

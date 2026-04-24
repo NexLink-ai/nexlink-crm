@@ -22,6 +22,12 @@ USER frappe
 COPY --from=builder --chown=frappe:frappe /home/frappe/frappe-bench /home/frappe/frappe-bench
 WORKDIR /home/frappe/frappe-bench
 
+# Replace Frappe logos with NexLink assets
+RUN cp apps/crm/crm/public/images/logo.svg apps/frappe/frappe/public/images/frappe-framework-logo.svg && \
+    cp apps/crm/crm/public/images/logo.svg apps/frappe/frappe/public/images/frappe-logo.svg && \
+    cp apps/crm/crm/public/favicon.png apps/frappe/frappe/public/favicon.png && \
+    cp apps/crm/crm/public/images/logo.svg apps/frappe/frappe/public/icons/frappe-favicon.svg
+
 VOLUME ["/home/frappe/frappe-bench/sites", "/home/frappe/frappe-bench/logs"]
 
 CMD ["/home/frappe/frappe-bench/env/bin/gunicorn", \
