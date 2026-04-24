@@ -1,5 +1,5 @@
 <template>
-  <img :src="logoUrl" alt="NexLink CRM" class="object-contain" />
+  <img :src="logoUrl" alt="NexLink CRM" class="size-full object-contain object-left" />
 </template>
 <script setup>
 import { useTheme } from 'frappe-ui'
